@@ -1,20 +1,26 @@
-document.getElementById('classifyButton').addEventListener('click', function() {
-    fetch('/upload', {
-        method: 'POST',
-        body: new URLSearchParams({
-            model_type: 'preoptimized'  // Change model_type as needed
-        }),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Classification results:', data);
-        document.getElementById('results').innerHTML = `<p>${data.message}</p>`;
-        // Optionally, display or download the classified images from OUTPUT_FOLDER
-    })
-    .catch(error => {
-        console.error('Classification error:', error);
+// script.js
+
+document.addEventListener('DOMContentLoaded', function () {
+    const classifyButton = document.getElementById('classify-button');
+
+    classifyButton.addEventListener('click', function () {
+        const modelType = document.querySelector('input[name="model-type"]:checked').value;
+
+        fetch('/upload', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ model_type: modelType }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Classification Results:', data);
+            // Handle success or display results as needed
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle errors or display error messages
+        });
     });
 });

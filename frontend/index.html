@@ -1,15 +1,28 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Classification</title>
+    <title>Image Classifier</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Image Classification</h1>
-    <button id="classifyButton">Classify Images</button>
-    <div id="results"></div>
+    <div class="container">
+        <h1>Image Classifier</h1>
+        <div class="radio-group">
+            <input type="radio" id="preoptimized" name="model-type" value="preoptimized" checked>
+            <label for="preoptimized">Preoptimized Model</label><br>
+            <input type="radio" id="optimized" name="model-type" value="optimized">
+            <label for="optimized">Optimized Model</label><br>
+        </div>
+        <button id="classify-button" class="button">Classify</button>
+        <div class="result">
+            <!-- Display classification results here if needed -->
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
